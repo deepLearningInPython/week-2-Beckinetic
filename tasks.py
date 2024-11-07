@@ -17,16 +17,16 @@ from sklearn import datasets
  
 # Copy and paste the code for that function here:
 # -----------------------------------------------
-def my_mlp(w, X, sigma_func=np.tanh):
+def my_mlp(w, X, sigma=np.tanh):
     # Construct between layer connection weights matrices W1, W2, and W3
     W1 = np.array(w[0:4 * 6]).reshape((4, 6))
     W2 = np.array(w[4 * 6:4 * 6 + 7 * 4]).reshape((7, 4))
     W3 = np.array(w[4 * 6 + 7 * 4:4 * 6 + 7 * 4 + 7]).reshape((1, 7))
 
     # Implement the equations
-    a1 = sigma_func(W1 @ X)  # input -> layer 1
-    a2 = sigma_func(W2 @ a1)  # layer 1 -> layer 2
-    f = sigma_func(W3 @ a2)  # layer 2 -> output
+    a1 = sigma(W1 @ X)  # input -> layer 1
+    a2 = sigma(W2 @ a1)  # layer 1 -> layer 2
+    f = sigma(W3 @ a2)  # layer 2 -> output
 
     return f
 # -----------------------------------------------
